@@ -1,3 +1,15 @@
+:root {
+  text-align: center;
+  font-family: "Calibri";
+  font-weight: lighter;
+  background-color: #CCCCCC;
+  --bg-color: #000;
+  --font-color: #fff;
+  --gray-color: #a5a6a5;
+  --lead-color: #333333;
+  --orange-color: #ff9e0a;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -6,6 +18,74 @@ body {
 
 main {
   height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#calculator{
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 275px;
+  height: 500px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--bg-color);
+  border-radius: 45px;
+}
+
+#screen{
+  align-self: center;
+  background-color: var(--bg-color);
+  width: 90%;
+  height: 30%;
+  color: var(--font-color);
+  text-align: right;
+  line-height: 40vh;
+  font-size: 5.25rem;
+  overflow: hidden;
+}
+
+#buttons{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 35px;
+  background-color: var(--bg-color);
+}
+
+.button{
+  width: 55px;
+  height: 55px;
+  margin: 5px 0px;
+  border-radius: 40px;
+  border: none;
+  font-size: 2.5rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.zero{
+  width: 122px;
+}
+
+.gray{
+  color: var(--bg-color);
+  background-color: var(--gray-color);
+}
+
+.lead{
+  color: var(--font-color);
+  background-color: var(--lead-color);
+}
+
+.orange{
+  color: var(--font-color);
+  background-color: var(--orange-color);
+  font-size: 3rem;
 }
 
 footer {
