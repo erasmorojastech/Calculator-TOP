@@ -17,35 +17,49 @@ const divide = (a, b) => {
   return a / b;
 }
 
-// This function takes an operator and two numbers ank make an arithmetic operation
+// Taking an operator and two numbers and make an arithmetic operation
 const operate = function (operator, a, b) {
-  let result;
-
-  if (operator === '+') return add(a,b)
-  if (operator === '-') return subtract(a,b)
-  if (operator === '*') return multiply(a,b)
-  if (operator === '/' && b === 0) {
+  if (operator === '+') return add(a, b)
+  if (operator === '-') return subtract(a, b)
+  if (operator === '×') return multiply(a, b)
+  if (operator === '÷' && b === 0) {
     return alert(`It's not possible a division by zero`);
   } else {
-    return divide(a,b);
+    return divide(a, b);
   }
 }
 
 // Display numbers on the screen
 const $number = document.querySelectorAll('.number');
 let $screen = document.querySelector('#screen');
+let operatorFlag = false;
 
 const populateScreen = function (number) {
-  
-  if ($screen.innerHTML === '0') {
-    $screen.innerHTML = number;
+  if (operatorFlag === false) {
+    if ($screen.innerHTML === '0') {
+      $screen.innerHTML = number;
+    } else {
+      $screen.innerHTML = $screen.innerHTML + number;
+    }
   } else {
-    $screen.innerHTML = $screen.innerHTML + number;
+    $screen.innerHTML = number;
   }
 }
 
-$number.forEach((number)=>{
-  number.addEventListener('click', ()=>{
+// Event for Number pressing
+$number.forEach((number) => {
+  number.addEventListener('click', () => {
     populateScreen(number.innerHTML);
-  })
+    operatorFlag = false;
+  });  
+});
+
+// Event for AC Button pressing
+const btnAC = document.querySelector('#buttonAC');
+
+btnAC.addEventListener('click', () => {
+  $screen.innerHTML = '0';
+  a=0;
+  b=0;
+  lastOperatorPressed = '+';
 });
