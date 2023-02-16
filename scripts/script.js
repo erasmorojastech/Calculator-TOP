@@ -46,7 +46,7 @@ const populateScreen = function (number) {
   }
 }
 
-// Event for Number pressing
+// Event for Number button pressing
 $number.forEach((number) => {
   number.addEventListener('click', () => {
     populateScreen(number.innerHTML);
@@ -62,4 +62,22 @@ btnAC.addEventListener('click', () => {
   a=0;
   b=0;
   lastOperatorPressed = '+';
+});
+
+// Event for Operation button pressing
+let a = 0;
+let b = 0;
+let lastKeyPressed; 
+let lastOperatorPressed = '+'
+const $operator = document.querySelectorAll('.operation');
+
+$operator.forEach((operation) => {
+  operation.addEventListener('click', () => {
+    operatorFlag = true;
+    b = Number($screen.innerHTML);
+    let result = operate(lastOperatorPressed, a, b);
+    a = result;
+    $screen.innerHTML = a;
+    lastOperatorPressed = operation.innerHTML;
+  });
 });
