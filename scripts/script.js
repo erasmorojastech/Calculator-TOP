@@ -32,7 +32,7 @@ const operate = function (operator, a, b) {
 // Display numbers on the screen
 const $number = document.querySelectorAll('.number');
 let $screen = document.querySelector('#screen');
-let operatorFlag = false;
+let operatorFlag = true;
 
 const populateScreen = function (number) {
   if (operatorFlag === false) {
@@ -71,13 +71,17 @@ let lastKeyPressed;
 let lastOperatorPressed = '+'
 const $operator = document.querySelectorAll('.operation');
 
+const makeOperationCall = function () {
+  operatorFlag = true;
+  b = Number($screen.innerHTML);
+  let result = operate(lastOperatorPressed, a, b);
+  a = result;
+  $screen.innerHTML = a;
+}
+
 $operator.forEach((operation) => {
   operation.addEventListener('click', () => {
-    operatorFlag = true;
-    b = Number($screen.innerHTML);
-    let result = operate(lastOperatorPressed, a, b);
-    a = result;
-    $screen.innerHTML = a;
+    if (!operatorFlag) makeOperationCall();
     lastOperatorPressed = operation.innerHTML;
   });
 });
